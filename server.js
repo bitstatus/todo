@@ -30,13 +30,24 @@ app.get('/todos/:id',function(req, res){
  
 });
 app.post('/todos', function(req,res){
-var body = req.body;
+var body = _.pick(req.body,'description','completed');
 if(!_.isBoolean(body.completed)||!_.isString(body.description)){
 	return res.status(404).send();
 }
 body.id = todoNextId++;
 todos.push(body)
 res.json(body);
+});
+app.delete('/todos/:id',function(req,res){
+    var todoid = parseInt(req.params.id,10);
+    var matchId = _.findWhere(todos,{id:todoid});
+    if(!matchId){
+    	res.status(404).json({"error": "in passing id"});
+    }
+    else{
+    	todos = _.without(todos,matchId)
+    	res.json(matchId);
+    }
 });
 app.listen(PORT, function(){
 	console.log('server lisitining in' +PORT);
