@@ -11,8 +11,14 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
+<<<<<<< HEAD
     "sequelize": "^3.5.1",
     "sqlite3":"^3.0.10",
+=======
+    "mysql": "^2.9.0",
+    "sequelize": "^3.5.1",
+    "sqlite3": "^3.0.10",
+>>>>>>> e38eb0b10e6a05a1b0f1ab681516ea4290ca9722
     "underscore": "^1.8.3"
   }
 }
